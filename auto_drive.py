@@ -11,7 +11,6 @@ def timeit(func):
         result = func(*args)
         print(f'time cost {time.perf_counter() - start} seconds')
         return result
-
     return inner
 
 
@@ -80,7 +79,6 @@ class Car:
     def control(self, velocity, accelaration, steer, direction):
         assert -1 < accelaration < 2, 'acceleration is bounded from (-1, 2)'
         assert -1 < steer < 1, '-1 means totally left side 45 degree, 1 means totally right side 45 degree'
-
         velocity = velocity + accelaration * (self.time_interval) * self.rotation_matrix(steer, 45) * direction
         return velocity
 
