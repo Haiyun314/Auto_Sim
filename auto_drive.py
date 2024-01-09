@@ -53,7 +53,7 @@ class Sensor(Alg):
         assert isinstance(sensor_front, np.ndarray), 'data type should be a np.array()'
         assert isinstance(sensor_end, np.ndarray), 'data type should be a np.array()'
         shape = self.map.shape
-        distance = Alg.distance(sensor_front, sensor_end, self.map, shape)
+        distance = self.distance(sensor_front, sensor_end, self.map, shape)
         return distance
 
 class Car:
