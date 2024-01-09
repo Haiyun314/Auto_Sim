@@ -19,11 +19,11 @@ class Alg:
     @timeit
     def distance(sensor_front, sensor_end, map, shape):
         """
-        use binary search to find the distance to object
+        use binary search to find the distance to boundary
         :param sensor_front: sensor's position
         :param sensor_end: the end position can be detected
         :param map: running area
-        :return: the distance from sensor to the object
+        :return: the distance from sensor to the boundary
         """
         if np.linalg.norm(sensor_end - sensor_front) > 2: # the error is smaller than 2
             if any(sensor_end < 0) or any(sensor_end > shape):
@@ -119,9 +119,9 @@ def run(model, position, velocity, sensor_information):
     acceleration, steer = model.predict(position, velocity, sensor_information)
     return acceleration, steer
 
-
-def main():
-    image = plt.imread(PATH + '/map/map.png')[..., 0]
+def test():
+    path = os.getcwd()
+    image = plt.imread(path + '/map/map.png')[..., 0]
     image = image.transpose()
     print(image.shape)
     print(Alg.distance(np.array([1, 4]), np.array([34, -10]), image, np.array([800, 600])))
@@ -131,6 +131,9 @@ def main():
     print(image)
 
 
+def main():
+    pass
+
+
 if __name__ == '__main__':
-    PATH = os.getcwd()
-    main()
+    test()
